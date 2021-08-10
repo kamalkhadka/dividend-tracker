@@ -1,20 +1,28 @@
+import { Nav, Navbar } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
-function Navigation() {
+export default function Navigation() {
   return (
-    <>
-      <nav className="navbar navbar-dark bg-dark">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <a className="navbar-brand" href="/">Track Dividend</a>
-          </div>
-          <ul className="nav navbar-right">
-            <li><a href="/signup" className="btn btn-secondary">Sign Up</a></li>
-            <li><a href="/login" className="btn btn-primary">Login</a></li>
-          </ul>
-        </div>
-      </nav>
-    </>
+    <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
+
+      <LinkContainer to="/">
+        <Navbar.Brand className="font-weight-bold text-muted">
+          Track Dividend
+        </Navbar.Brand>
+      </LinkContainer>
+      <Navbar.Toggle />
+      <Navbar.Collapse className="justify-content-end">
+        <Nav activeKey={window.location.pathname}>
+          <LinkContainer to="/signup">
+            <Nav.Link>Signup</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/login">
+            <Nav.Link>Login</Nav.Link>
+          </LinkContainer>
+        </Nav>
+      </Navbar.Collapse>
+
+    </Navbar>
   );
 }
 
-export default Navigation;
